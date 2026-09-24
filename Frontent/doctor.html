@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PatientCare - Doctor Dashboard</title>
+
+    <link rel="stylesheet" href="doctor.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <div class="logo">
+            PatientCare
+        </div>
+
+        <div class="doctor-header-info">
+
+            <span class="doctor-icon">👨‍⚕️</span>
+
+            <div>
+                <strong id="headerDoctorName">
+                    Dr. Priyanshu Modi
+                </strong>
+
+                <small id="headerDoctorSpecialization">
+                    General Medicine Specialist
+                </small>
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <a href="#dashboard">
+                DASHBOARD
+            </a>
+
+            <a href="#pending">
+                PENDING CASES
+            </a>
+
+            <a href="#accepted">
+                MY CASES
+            </a>
+
+            <a href="#consultants">
+                DOCTORS
+            </a>
+
+        </nav>
+
+
+        <select id="languageSelect">
+
+            <option value="en">
+                English
+            </option>
+
+            <option value="hi">
+                हिन्दी
+            </option>
+
+        </select>
+
+    </header>
+
+
+    <!-- =========================
+         DASHBOARD HERO
+    ========================= -->
+
+    <section id="dashboard" class="dashboard-hero">
+
+        <div>
+
+            <p class="eyebrow">
+                DOCTOR PORTAL
+            </p>
+
+            <h1>
+                Welcome,
+                <span id="welcomeDoctorName">
+                    Dr. Priyanshu Modi
+                </span>
+            </h1>
+
+            <p id="welcomeDoctorSpecialization">
+                General Medicine Specialist
+            </p>
+
+            <p class="hero-description">
+                Review patient cases assigned to your
+                specialization and manage accepted cases.
+            </p>
+
+        </div>
+
+
+        <!-- DOCTOR SELECTOR -->
+
+        <div class="doctor-selector-card">
+
+            <label for="doctorSelect">
+                Logged-in Doctor
+            </label>
+
+            <select id="doctorSelect">
+
+                <option value="Priyanshu Modi">
+                    Dr. Priyanshu Modi — General Medicine
+                </option>
+
+                <option value="Priyanshu Bartwal">
+                    Dr. Priyanshu Bartwal — ENT
+                </option>
+
+                <option value="Shruti Sharma">
+                    Dr. Shruti Sharma — Gynaecology
+                </option>
+
+                <option value="Shubh Dakshika">
+                    Dr. Shubh Dakshika — Homeopathy
+                </option>
+
+                <option value="Sahil Bisht">
+                    Dr. Sahil Bisht — Pediatrics
+                </option>
+
+                <option value="Varun Pujara">
+                    Dr. Varun Pujara — Ophthalmology
+                </option>
+
+            </select>
+
+            <p>
+                The dashboard will display cases matching
+                this doctor's specialization.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         STATISTICS
+    ========================= -->
+
+    <section class="stats-section">
+
+        <div class="stat-card">
+
+            <span class="stat-icon">
+                📋
+            </span>
+
+            <div>
+
+                <h3 id="pendingCount">
+                    0
+                </h3>
+
+                <p>
+                    Matching Cases
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span class="stat-icon">
+                ✅
+            </span>
+
+            <div>
+
+                <h3 id="acceptedCount">
+                    0
+                </h3>
+
+                <p>
+                    My Accepted Cases
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span class="stat-icon">
+                🔄
+            </span>
+
+            <div>
+
+                <h3 id="reviewCount">
+                    0
+                </h3>
+
+                <p>
+                    In Review
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span class="stat-icon">
+                ✔️
+            </span>
+
+            <div>
+
+                <h3 id="completedCount">
+                    0
+                </h3>
+
+                <p>
+                    Completed
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PENDING CASES
+    ========================= -->
+
+    <section id="pending" class="dashboard-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p>
+                    CASE QUEUE
+                </p>
+
+                <h2>
+                    Matching Patient Cases
+                </h2>
+
+                <span>
+                    Only patients whose case matches your
+                    specialization can be accepted.
+                </span>
+
+            </div>
+
+
+            <button
+                class="refresh-btn"
+                id="refreshCasesBtn"
+            >
+                🔄 Refresh
+            </button>
+
+        </div>
+
+
+        <div id="pendingCasesContainer" class="cases-grid">
+
+            <!-- Cases inserted by JS -->
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ALL PATIENTS
+    ========================= -->
+
+    <section class="dashboard-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p>
+                    PATIENT DATABASE
+                </p>
+
+                <h2>
+                    Patient Records
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Patient
+                        </th>
+
+                        <th>
+                            Age
+                        </th>
+
+                        <th>
+                            Gender
+                        </th>
+
+                        <th>
+                            Complaint
+                        </th>
+
+                        <th>
+                            Specialization
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="patientTableBody">
+
+                    <!-- JS -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MY ACCEPTED CASES
+    ========================= -->
+
+    <section id="accepted" class="dashboard-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p>
+                    MY WORK
+                </p>
+
+                <h2>
+                    My Accepted Cases
+                </h2>
+
+                <span>
+                    Cases accepted by the currently selected doctor.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="acceptedCasesContainer"
+            class="cases-grid"
+        >
+
+            <!-- JS -->
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CASE DETAILS
+    ========================= -->
+
+    <section
+        id="caseDetailsSection"
+        class="dashboard-section case-details-section hidden"
+    >
+
+        <div class="section-heading">
+
+            <div>
+
+                <p>
+                    CASE REVIEW
+                </p>
+
+                <h2>
+                    Patient Case Details
+                </h2>
+
+            </div>
+
+            <button
+                id="closeCaseBtn"
+                class="close-btn"
+            >
+                ✕ Close
+            </button>
+
+        </div>
+
+
+        <div class="case-details-grid">
+
+            <!-- PATIENT INFORMATION -->
+
+            <div class="details-card">
+
+                <h3>
+                    Patient Information
+                </h3>
+
+                <div id="patientDetails">
+
+                    <!-- JS -->
+
+                </div>
+
+            </div>
+
+
+            <!-- MEDICAL INFORMATION -->
+
+            <div class="details-card">
+
+                <h3>
+                    Medical Information
+                </h3>
+
+                <div id="medicalDetails">
+
+                    <!-- JS -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             DOCTOR ACTIONS
+        ========================= -->
+
+        <div class="doctor-actions-card">
+
+            <h3>
+                Doctor Actions
+            </h3>
+
+
+            <div class="status-row">
+
+                <label for="caseStatus">
+                    Case Status
+                </label>
+
+                <select id="caseStatus">
+
+                    <option value="Accepted">
+                        Accepted
+                    </option>
+
+                    <option value="In Review">
+                        In Review
+                    </option>
+
+                    <option value="Completed">
+                        Completed
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <form id="doctorNotesForm">
+
+                <input
+                    type="hidden"
+                    id="caseId"
+                >
+
+
+                <label for="diagnosis">
+                    Diagnosis
+                </label>
+
+                <textarea
+                    id="diagnosis"
+                    rows="3"
+                    placeholder="Enter diagnosis..."
+                ></textarea>
+
+
+                <label for="doctorNote">
+                    Clinical Notes
+                </label>
+
+                <textarea
+                    id="doctorNote"
+                    rows="5"
+                    placeholder="Enter clinical observations and notes..."
+                ></textarea>
+
+
+                <label for="prescription">
+                    Prescription
+                </label>
+
+                <textarea
+                    id="prescription"
+                    rows="4"
+                    placeholder="Enter prescription..."
+                ></textarea>
+
+
+                <button
+                    type="submit"
+                    class="save-btn"
+                >
+                    💾 Save Doctor Notes
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONSULTANTS
+    ========================= -->
+
+    <section
+        id="consultants"
+        class="dashboard-section consultants-section"
+    >
+
+        <div class="section-heading">
+
+            <div>
+
+                <p>
+                    SPECIALIST NETWORK
+                </p>
+
+                <h2>
+                    Consultant Doctors
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="consultants-grid">
+
+
+            <div class="consultant-card">
+
+                <div class="consultant-icon">
+                    👨‍⚕️
+                </div>
+
+                <h3>
+                    Dr. Priyanshu Modi
+                </h3>
+
+                <p>
+                    General Medicine Specialist
+                </p>
+
+            </div>
+
+
+            <div class="consultant-card">
+
+                <div class="consultant-icon">
+                    👂
+                </div>
+
+                <h3>
+                    Dr. Priyanshu Bartwal
+                </h3>
+
+                <p>
+                    ENT Specialist
+                </p>
+
+            </div>
+
+
+            <div class="consultant-card">
+
+                <div class="consultant-icon">
+                    👩‍⚕️
+                </div>
+
+                <h3>
+                    Dr. Shruti Sharma
+                </h3>
+
+                <p>
+                    Gynaecologist
+                </p>
+
+            </div>
+
+
+            <div class="consultant-card">
+
+                <div class="consultant-icon">
+                    🌿
+                </div>
+
+                <h3>
+                    Dr. Shubh Dakshika
+                </h3>
+
+                <p>
+                    Homeopathy Specialist
+                </p>
+
+            </div>
+
+
+            <div class="consultant-card">
+
+                <div class="consultant-icon">
+                    👶
+                </div>
+
+                <h3>
+                    Dr. Sahil Bisht
+                </h3>
+
+                <p>
+                    Pediatrician
+                </p>
+
+            </div>
+
+
+            <div class="consultant-card">
+
+                <div class="consultant-icon">
+                    👁️
+                </div>
+
+                <h3>
+                    Dr. Varun Pujara
+                </h3>
+
+                <p>
+                    Ophthalmologist
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <h3>
+            PatientCare
+        </h3>
+
+        <p>
+            Digital Patient Case-Taking System
+        </p>
+
+        <p>
+            Smart India Hackathon 2026
+        </p>
+
+        <small>
+            PatientCare • SIH26047
+        </small>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="doctor.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PatientCare - Patient Case Portal</title>
+
+    <link rel="stylesheet" href="patient.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <div class="logo">
+            PatientCare
+        </div>
+
+        <nav>
+            <a href="#home" data-i18n="navHome">HOME</a>
+            <a href="#case" data-i18n="navCase">CASE FORM</a>
+            <a href="#doctors" data-i18n="navDoctors">DOCTORS</a>
+            <a href="#history" data-i18n="navHistory">HISTORY</a>
+            <a href="#about" data-i18n="navAbout">ABOUT</a>
+        </nav>
+
+        <!-- LANGUAGE -->
+
+        <div class="language-selector">
+
+            <span>🌐</span>
+
+            <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="hi">हिन्दी</option>
+            </select>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         HOME
+    ========================= -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <p class="tagline" data-i18n="tagline">
+                DIGITAL PATIENT CASE SYSTEM
+            </p>
+
+            <h1>
+
+                <span class="hero-title" data-i18n="heroTitle">
+                    Your Health.
+                </span>
+
+                <span data-i18n="heroTitleSpan">
+                    Your Record.
+                </span>
+
+            </h1>
+
+            <p data-i18n="heroDescription">
+                Provide your medical information securely
+                so healthcare professionals can understand
+                your case and provide better care.
+            </p>
+
+            <a href="#case" class="primary-btn" data-i18n="startForm">
+                START CASE FORM
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CASE FORM
+    ========================= -->
+
+    <section id="case" class="section">
+
+        <div class="section-title">
+
+            <p data-i18n="patientInfo">
+                PATIENT INFORMATION
+            </p>
+
+            <h2 data-i18n="caseTaking">
+                Case Taking Form
+            </h2>
+
+            <p class="section-description" data-i18n="formDescription">
+                Fill in your details and medical information carefully.
+            </p>
+
+        </div>
+
+
+        <!-- PATIENT FORM -->
+
+        <form id="patientForm" class="case-form">
+
+
+            <!-- =========================
+                 PERSONAL INFORMATION
+            ========================= -->
+
+            <div class="form-section">
+
+                <h3 data-i18n="personalDetails">
+                    Personal Details
+                </h3>
+
+
+                <label for="full_name" data-i18n="fullName">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="full_name"
+                    placeholder="Enter your full name"
+                    data-i18n-placeholder="fullNamePlaceholder"
+                    autocomplete="name"
+                    required
+                >
+
+
+                <label for="age" data-i18n="age">
+                    Age
+                </label>
+
+                <input
+                    type="number"
+                    id="age"
+                    placeholder="Enter your age"
+                    data-i18n-placeholder="agePlaceholder"
+                    min="1"
+                    max="120"
+                    required
+                >
+
+
+                <label data-i18n="gender">
+                    Gender
+                </label>
+
+                <div class="radio-group">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Male"
+                            required
+                        >
+
+                        <span data-i18n="male">
+                            Male
+                        </span>
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Female"
+                        >
+
+                        <span data-i18n="female">
+                            Female
+                        </span>
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Other"
+                        >
+
+                        <span data-i18n="other">
+                            Other
+                        </span>
+                    </label>
+
+                </div>
+
+
+                <label for="phone" data-i18n="phone">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter phone number"
+                    data-i18n-placeholder="phonePlaceholder"
+                    autocomplete="tel"
+                >
+
+
+                <label for="email" data-i18n="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter email address"
+                    data-i18n-placeholder="emailPlaceholder"
+                    autocomplete="email"
+                >
+
+            </div>
+
+
+            <!-- =========================
+                 MEDICAL INFORMATION
+            ========================= -->
+
+            <div class="form-section">
+
+                <h3 data-i18n="medicalInfo">
+                    Medical Information
+                </h3>
+
+
+                <label for="complaint" data-i18n="complaint">
+                    Main Complaint
+                </label>
+
+                <textarea
+                    id="complaint"
+                    placeholder="Describe your main health concern..."
+                    data-i18n-placeholder="complaintPlaceholder"
+                    rows="4"
+                    required
+                ></textarea>
+
+
+                <label for="symptoms" data-i18n="symptoms">
+                    Symptoms
+                </label>
+
+                <textarea
+                    id="symptoms"
+                    placeholder="Describe your symptoms..."
+                    data-i18n-placeholder="symptomsPlaceholder"
+                    rows="4"
+                ></textarea>
+
+
+                <label for="duration" data-i18n="duration">
+                    Duration of Symptoms
+                </label>
+
+                <input
+                    type="text"
+                    id="duration"
+                    placeholder="e.g. 3 days, 2 weeks"
+                    data-i18n-placeholder="durationPlaceholder"
+                >
+
+
+                <label for="severity" data-i18n="severity">
+                    Severity
+                </label>
+
+                <select id="severity">
+
+                    <option value="" data-i18n="selectSeverity">
+                        Select severity
+                    </option>
+
+                    <option value="mild" data-i18n="mild">
+                        Mild
+                    </option>
+
+                    <option value="moderate" data-i18n="moderate">
+                        Moderate
+                    </option>
+
+                    <option value="severe" data-i18n="severe">
+                        Severe
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- =========================
+                 MEDICAL HISTORY
+            ========================= -->
+
+            <div class="form-section">
+
+                <h3 data-i18n="medicalHistory">
+                    Medical History
+                </h3>
+
+
+                <label for="conditions" data-i18n="conditions">
+                    Existing Medical Conditions
+                </label>
+
+                <textarea
+                    id="conditions"
+                    placeholder="Diabetes, asthma, hypertension, etc."
+                    data-i18n-placeholder="conditionsPlaceholder"
+                    rows="3"
+                ></textarea>
+
+
+                <label for="medications" data-i18n="medications">
+                    Current Medications
+                </label>
+
+                <textarea
+                    id="medications"
+                    placeholder="List your current medications..."
+                    data-i18n-placeholder="medicationsPlaceholder"
+                    rows="3"
+                ></textarea>
+
+
+                <label for="allergies" data-i18n="allergies">
+                    Allergies
+                </label>
+
+                <textarea
+                    id="allergies"
+                    placeholder="Mention any known allergies..."
+                    data-i18n-placeholder="allergiesPlaceholder"
+                    rows="3"
+                ></textarea>
+
+
+                <label for="past-history" data-i18n="pastHistory">
+                    Past Medical History
+                </label>
+
+                <textarea
+                    id="past-history"
+                    placeholder="Previous illnesses, surgeries, hospitalizations..."
+                    data-i18n-placeholder="pastHistoryPlaceholder"
+                    rows="3"
+                ></textarea>
+
+            </div>
+
+
+            <!-- =========================
+                 LIFESTYLE
+            ========================= -->
+
+            <div class="form-section">
+
+                <h3 data-i18n="lifestyle">
+                    Lifestyle Information
+                </h3>
+
+
+                <label for="diet" data-i18n="diet">
+                    Diet
+                </label>
+
+                <select id="diet">
+
+                    <option value="" data-i18n="select">
+                        Select
+                    </option>
+
+                    <option value="Vegetarian" data-i18n="vegetarian">
+                        Vegetarian
+                    </option>
+
+                    <option value="Non-Vegetarian" data-i18n="nonVegetarian">
+                        Non-Vegetarian
+                    </option>
+
+                    <option value="Vegan" data-i18n="vegan">
+                        Vegan
+                    </option>
+
+                </select>
+
+
+                <label for="sleep" data-i18n="sleep">
+                    Average Sleep
+                </label>
+
+                <input
+                    type="text"
+                    id="sleep"
+                    placeholder="e.g. 7 hours"
+                    data-i18n-placeholder="sleepPlaceholder"
+                >
+
+
+                <label for="activity" data-i18n="activity">
+                    Physical Activity
+                </label>
+
+                <select id="activity">
+
+                    <option value="" data-i18n="select">
+                        Select
+                    </option>
+
+                    <option value="Low" data-i18n="low">
+                        Low
+                    </option>
+
+                    <option value="Moderate" data-i18n="moderateActivity">
+                        Moderate
+                    </option>
+
+                    <option value="High" data-i18n="high">
+                        High
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- =========================
+                 CONSULTANT DOCTOR
+            ========================= -->
+
+            <div class="form-section doctor-selection-section">
+
+                <h3 data-i18n="consultantDoctor">
+                    Select Consultant Doctor
+                </h3>
+
+                <p class="doctor-help-text" data-i18n="doctorHelp">
+                    Choose the specialist you want your case to be reviewed by.
+                </p>
+
+
+                <div class="doctor-selection-grid">
+
+
+                    <!-- DOCTOR 1 -->
+
+                    <label class="doctor-option">
+
+                        <input
+                            type="radio"
+                            name="consultant_doctor"
+                            value="Priyanshu Modi"
+                            data-doctor-specialization="General Medicine"
+                            required
+                        >
+
+                        <div class="doctor-option-card">
+
+                            <div class="doctor-avatar">
+                                👨‍⚕️
+                            </div>
+
+                            <h4>
+                                Dr. Priyanshu Modi
+                            </h4>
+
+                            <p data-i18n="generalMedicine">
+                                General Medicine Specialist
+                            </p>
+
+                            <span data-i18n="generalMedicineDesc">
+                                General health and primary care
+                            </span>
+
+                        </div>
+
+                    </label>
+
+
+                    <!-- DOCTOR 2 -->
+
+                    <label class="doctor-option">
+
+                        <input
+                            type="radio"
+                            name="consultant_doctor"
+                            value="Priyanshu Bartwal"
+                            data-doctor-specialization="ENT"
+                        >
+
+                        <div class="doctor-option-card">
+
+                            <div class="doctor-avatar">
+                                👂
+                            </div>
+
+                            <h4>
+                                Dr. Priyanshu Bartwal
+                            </h4>
+
+                            <p data-i18n="entSpecialist">
+                                ENT Specialist
+                            </p>
+
+                            <span data-i18n="entDesc">
+                                Ear, nose and throat specialist
+                            </span>
+
+                        </div>
+
+                    </label>
+
+
+                    <!-- DOCTOR 3 -->
+
+                    <label class="doctor-option">
+
+                        <input
+                            type="radio"
+                            name="consultant_doctor"
+                            value="Shruti Sharma"
+                            data-doctor-specialization="Gynaecology"
+                        >
+
+                        <div class="doctor-option-card">
+
+                            <div class="doctor-avatar">
+                                👩‍⚕️
+                            </div>
+
+                            <h4>
+                                Dr. Shruti Sharma
+                            </h4>
+
+                            <p data-i18n="gynaecologist">
+                                Gynaecologist
+                            </p>
+
+                            <span data-i18n="gynaecologyDesc">
+                                Women's reproductive health
+                            </span>
+
+                        </div>
+
+                    </label>
+
+
+                    <!-- DOCTOR 4 -->
+
+                    <label class="doctor-option">
+
+                        <input
+                            type="radio"
+                            name="consultant_doctor"
+                            value="Shubh Dakshika"
+                            data-doctor-specialization="Homeopathy"
+                        >
+
+                        <div class="doctor-option-card">
+
+                            <div class="doctor-avatar">
+                                🌿
+                            </div>
+
+                            <h4>
+                                Dr. Shubh Dakshika
+                            </h4>
+
+                            <p data-i18n="homeopathy">
+                                Homeopathy Specialist
+                            </p>
+
+                            <span data-i18n="homeopathyDesc">
+                                Homeopathic consultation and care
+                            </span>
+
+                        </div>
+
+                    </label>
+
+
+                    <!-- DOCTOR 5 -->
+
+                    <label class="doctor-option">
+
+                        <input
+                            type="radio"
+                            name="consultant_doctor"
+                            value="Sahil Bisht"
+                            data-doctor-specialization="Pediatrics"
+                        >
+
+                        <div class="doctor-option-card">
+
+                            <div class="doctor-avatar">
+                                👶
+                            </div>
+
+                            <h4>
+                                Dr. Sahil Bisht
+                            </h4>
+
+                            <p data-i18n="pediatrician">
+                                Pediatrician
+                            </p>
+
+                            <span data-i18n="pediatricDesc">
+                                Children's health and pediatric care
+                            </span>
+
+                        </div>
+
+                    </label>
+
+
+                    <!-- DOCTOR 6 -->
+
+                    <label class="doctor-option">
+
+                        <input
+                            type="radio"
+                            name="consultant_doctor"
+                            value="Varun Pujara"
+                            data-doctor-specialization="Ophthalmology"
+                        >
+
+                        <div class="doctor-option-card">
+
+                            <div class="doctor-avatar">
+                                👁️
+                            </div>
+
+                            <h4>
+                                Dr. Varun Pujara
+                            </h4>
+
+                            <p data-i18n="eyeDoctor">
+                                Eye Doctor / Ophthalmologist
+                            </p>
+
+                            <span data-i18n="eyeDesc">
+                                Eye health and vision care
+                            </span>
+
+                        </div>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 SELECTED DOCTOR
+            ========================= -->
+
+            <div class="selected-doctor-box">
+
+                <span>👨‍⚕️</span>
+
+                <div>
+
+                    <strong data-i18n="selectedDoctor">
+                        Selected Doctor
+                    </strong>
+
+                    <p id="selectedDoctorText" data-i18n="noDoctorSelected">
+                        No doctor selected
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 SUBMIT
+            ========================= -->
+
+            <div class="submit-section">
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                    data-i18n="submit"
+                >
+                    SUBMIT CASE
+                </button>
+
+                <p data-i18n="secureText">
+                    Your information will be securely stored
+                    for healthcare professionals.
+                </p>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- =========================
+         DOCTORS
+    ========================= -->
+
+    <section id="doctors" class="section doctors-section">
+
+        <div class="section-title">
+
+            <p data-i18n="specialistNetwork">
+                SPECIALIST NETWORK
+            </p>
+
+            <h2 data-i18n="ourDoctors">
+                Our Consultant Doctors
+            </h2>
+
+            <p class="section-description" data-i18n="doctorSectionDescription">
+                Choose a suitable specialist for your medical case.
+            </p>
+
+        </div>
+
+
+        <div class="doctors-container">
+
+
+            <div class="doctor-card">
+
+                <div class="doctor-avatar">
+                    👨‍⚕️
+                </div>
+
+                <h3>
+                    Dr. Priyanshu Modi
+                </h3>
+
+                <p data-i18n="generalMedicine">
+                    General Medicine Specialist
+                </p>
+
+            </div>
+
+
+            <div class="doctor-card">
+
+                <div class="doctor-avatar">
+                    👂
+                </div>
+
+                <h3>
+                    Dr. Priyanshu Bartwal
+                </h3>
+
+                <p data-i18n="entSpecialist">
+                    ENT Specialist
+                </p>
+
+            </div>
+
+
+            <div class="doctor-card">
+
+                <div class="doctor-avatar">
+                    👩‍⚕️
+                </div>
+
+                <h3>
+                    Dr. Shruti Sharma
+                </h3>
+
+                <p data-i18n="gynaecologist">
+                    Gynaecologist
+                </p>
+
+            </div>
+
+
+            <div class="doctor-card">
+
+                <div class="doctor-avatar">
+                    🌿
+                </div>
+
+                <h3>
+                    Dr. Shubh Dakshika
+                </h3>
+
+                <p data-i18n="homeopathy">
+                    Homeopathy Specialist
+                </p>
+
+            </div>
+
+
+            <div class="doctor-card">
+
+                <div class="doctor-avatar">
+                    👶
+                </div>
+
+                <h3>
+                    Dr. Sahil Bisht
+                </h3>
+
+                <p data-i18n="pediatrician">
+                    Pediatrician
+                </p>
+
+            </div>
+
+
+            <div class="doctor-card">
+
+                <div class="doctor-avatar">
+                    👁️
+                </div>
+
+                <h3>
+                    Dr. Varun Pujara
+                </h3>
+
+                <p data-i18n="eyeDoctor">
+                    Eye Doctor / Ophthalmologist
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         HISTORY
+    ========================= -->
+
+    <section id="history" class="section history-section">
+
+        <div class="section-title">
+
+            <p data-i18n="records">
+                YOUR RECORDS
+            </p>
+
+            <h2 data-i18n="caseHistory">
+                Case History
+            </h2>
+
+        </div>
+
+
+        <div class="history-card">
+
+            <div class="history-icon">
+                📋
+            </div>
+
+            <h3 data-i18n="noCases">
+                No Previous Cases
+            </h3>
+
+            <p data-i18n="noCasesDescription">
+                Your submitted medical cases will appear here.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section id="about" class="section about-section">
+
+        <div class="section-title">
+
+            <p data-i18n="aboutSystem">
+                ABOUT THE SYSTEM
+            </p>
+
+            <h2 data-i18n="patientPortal">
+                Patient Case Portal
+            </h2>
+
+        </div>
+
+
+        <p data-i18n="aboutDescription">
+            PatientCare allows patients to digitally provide
+            their medical information and case history.
+            Healthcare professionals can then review
+            structured patient information through the
+            doctor dashboard.
+        </p>
+
+
+        <div class="features">
+
+            <div>
+                <div class="feature-icon">🔒</div>
+
+                <h3 data-i18n="secureRecords">
+                    Secure Records
+                </h3>
+            </div>
+
+
+            <div>
+                <div class="feature-icon">📝</div>
+
+                <h3 data-i18n="digitalCase">
+                    Digital Case Taking
+                </h3>
+            </div>
+
+
+            <div>
+                <div class="feature-icon">👨‍⚕️</div>
+
+                <h3 data-i18n="doctorAccess">
+                    Doctor Access
+                </h3>
+            </div>
+
+
+            <div>
+                <div class="feature-icon">📊</div>
+
+                <h3 data-i18n="medicalHistoryFeature">
+                    Medical History
+                </h3>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <h3>
+            PatientCare
+        </h3>
+
+        <p data-i18n="footerDescription">
+            Digital Patient Case-Taking System
+        </p>
+
+        <p data-i18n="specialistFooter">
+            Multi-Specialist Healthcare Consultation
+        </p>
+
+        <p class="copyright">
+            SIH 2026 • Problem Statement #47
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="patient.js"></script>
+
+</body>
+
+</html>
